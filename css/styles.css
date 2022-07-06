@@ -1,0 +1,308 @@
+:root {
+	--section-dark: rgba(13, 29, 43, 1);
+	--section-light: rgba(13, 29, 43, 0.8);
+	--accent-background: #05101a;
+	--accent-rgba: rgba(5, 16, 26, 0.8);
+	--action-color: #FF7700;
+	--font-color: #f6f6f6;
+	--background-img-path: url(../images/night_mountains_hero.svg);
+}
+/*-----Global Styles-----*/
+html {
+	box-sizing: border-box;
+	font-size: calc(0.5em + 2.5vmin);
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+*, *:before, *:after { box-sizing: inherit; }
+/*a tag padding makes click targets bigger for mobile and motor disabled people*/
+a {
+	padding: 10px;
+	color: var(--font-color);
+	display: inline-block;
+}
+body {
+	color: var(--font-color);
+	text-align: left;
+	margin: 0;
+	line-height: 200%;
+	background-color: var(--accent-background);
+	font-family: 'Quicksand', sans-serif;
+	overflow-x: hidden;
+}
+p::first-letter, h2::first-letter, h3::first-letter, h4::first-letter {
+	font-family: 'Pacifico', cursive;
+	font-size: 1.25rem;
+	/*this is so that the next letter isn't so close due to the increased size*/
+	letter-spacing: .25rem;
+}
+.github {
+	height: 2rem;
+	width: 2rem !important;
+	min-width: 2rem !important;
+	position: unset !important;
+	margin-left: .75rem;
+}
+.externalLink {
+	height: 1.8rem;
+	width: 1.8rem !important;
+	min-width: 2rem !important;
+	position: unset !important;
+	/** 
+	* .1rem margin makes the external link and github image centered.
+	* The github image has some space around it in the image file and the
+	* externalLnk image dose not have this space in the image file.
+	*/
+	margin: .1rem;
+	margin-left: .75rem;
+}
+/*-----Page order-----*/
+.canvasContainer {
+	min-height: 90vh;
+	max-height: 90vh;
+	min-width: 100vw;
+	max-width: 100vw;
+}
+#starCanvas {
+	position: fixed;
+	z-index: -3;
+}
+.heroContent {
+	position: absolute;
+	top: calc(25vmax - (calc(0.5em + 2.5vmin)*2));
+	max-width: 100vw;
+	min-width: 100vw;
+	padding: 1rem;
+}
+svg {
+	width: 100vw;
+	height: 100vh;
+	max-width: 1800px;
+	display: block;
+	margin: auto;
+}
+@keyframes drawText {
+   	90% {
+	   fill: transparent;
+   	}
+	100% {
+	   stroke-dashoffset: 0;
+	   fill: #ff7700;
+	}
+}
+/* Hero Images*/
+.heroImg {
+	background: var(--background-img-path);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	z-index: -2;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+}
+#heroText {
+	stroke:#ff7700;stroke-width:0.465;
+	fill: transparent;
+	animation-name: drawText;
+	stroke-dasharray: 80 ;
+	stroke-dashoffset: 80;
+	animation-fill-mode: forwards;
+	animation-duration: 2s ;
+	animation-delay: 400ms;
+}
+h2 {
+	text-align: center;
+	font-size: 1rem;
+	font-weight: normal;
+	margin: 0;
+}
+.sectionDark, .sectionLight {
+	-webkit-clip-path: polygon(0 0, 50% 7vw, 100% 0%, 100% calc(100% - 7vw), 50% 100%, 0 calc(100% - 7vw));
+	-moz-clip-path: polygon(0 0, 50% 7vw, 100% 0%, 100% calc(100% - 7vw), 50% 100%, 0 calc(100% - 7vw));
+	-ms-clip-path: polygon(0 0, 50% 7vw, 100% 0%, 100% calc(100% - 7vw), 50% 100%, 0 calc(100% - 7vw));
+	-o-clip-path: polygon(0 0, 50% 7vw, 100% 0%, 100% calc(100% - 7vw), 50% 100%, 0 calc(100% - 7vw));
+	clip-path: polygon(0 0, 50% 7vw, 100% 0%, 100% calc(100% - 7vw), 50% 100%, 0 calc(100% - 7vw));
+	margin-bottom: -7.1vw;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+.sectionLight { background-color: var(--section-light); }
+.sectionDark { background-color: var(--section-dark); }
+.grid {
+	display: grid;
+	grid-template-columns: repeat(11, 1fr);
+}
+.colContainer {
+	grid-column-start: 2;
+	grid-column-end: 11;
+	padding: .75rem;
+}
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.showHover:hover, .showHover:focus, a:hover, a:focus, h4:hover, h4:focus, h3:hover, h3:focus {
+	transform: scale(1.1);
+	z-index: 10;
+	transition-duration: 150ms;
+}
+/*About Me Section*/
+button {
+	display: block;
+	background-color: var(--action-color);
+	width: 80vw;
+	max-width: 300px;
+	margin: auto;
+	border-radius: 15px;
+	border: none;
+}
+button a, button a:visited{ 
+	text-decoration: none;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 1.5rem;
+	color: var(--accent-background);
+}
+#edu { grid-row-gap: 0; }
+#edu ul, .edu-ul ul li {
+	list-style-type: none;
+	text-align: left;
+	font-weight: normal;
+}
+.edu-ul li { font-weight: bold; }
+.gradCap { height: 1rem; }
+#skills h2 {
+	grid-column-start: 1;
+	grid-column-end: 12;
+}
+.skillColLeft {
+	grid-column-start: 2;
+	grid-column-end: 10;
+}
+.skillColRight {
+	grid-column-start: 2;
+	grid-column-end: 10;
+}
+#skills h4 {
+	display: inline-block;
+	margin: 0;
+}
+/*icon colors and size for img*/
+.svgSkillIconHeight { height: 1.25rem }
+.skillIconHeight { height: 1rem; }
+.portfolio a {
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+.portColLeft {
+	grid-column-start: 1;
+	grid-column-end: 12;	
+}
+.portColRight {
+	grid-column-start: 1;
+	grid-column-end: 12;
+}
+.portColFullWidth {
+	grid-column-start: 1;
+	grid-column-end: 12;
+	margin-top: .75rem;
+}
+.portfolio h3 {
+	padding: .75rem;
+	margin: 0;
+}
+.portfolio img {
+	max-width: 80vw;
+	min-width: 80vw;
+	width: 80vw;
+	height: auto;
+}
+.portfolio p {
+	margin: 0;
+	padding: 0 .75rem .75rem .75rem;
+}
+.slideIn {
+	opacity: 0;
+	transition: all 1s;
+	transition-timing-function: ease-in-out;
+}
+.slideIn.left { transform: translateX(-50%); }
+.slideIn.right { transform: translateX(50%); }
+.slideIn.startSlideIn {
+	transform: translateX(0%);
+	opacity: 1;
+	transition-delay: .25s;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: scale(.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.fadeIn {
+	opacity: 0;
+	animation-name: fadeIn;
+	animation-fill-mode: forwards;
+	animation-duration: 2s;
+}
+.contactIcon { height: 5rem; width: 5rem; }
+footer {
+	background-color: var(--accent-background);
+	position: relative;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	font-size: .75rem;
+	text-align: center;
+	line-height: 150%;
+}
+@media only screen and (min-width: 500px ) {
+	svg { height: auto; }
+	h2 { font-size: 1.5rem; }
+}
+/*phablet, tablet, desktop media query*/
+@media only screen and (min-width: 1200px) {
+	.heroContent { top: calc(30vh - 8rem); }
+	.heroImg { background-size: 100% 100%; }
+	/*portfolio grid columns sizing*/
+	.portColLeft {
+		grid-column-start: 1;
+		grid-column-end: 6;
+		min-height: 10vw;
+	}
+	.portColRight {
+		grid-column-start: 6;
+		grid-column-end: 12;
+		min-height: 10vw;
+	}
+	.portfolio img {
+		max-width: 100%;
+		min-width: 100%;	
+		width: 100%;
+		height: auto;
+	}
+	.skillColLeft {
+		grid-column-start: 2;
+		grid-column-end: 6;
+	}
+	.skillColRight {
+		grid-column-start: 7;
+		grid-column-end: 10;
+	}
+}
+/*widescreen desktop*/
+@media only screen and ( min-width: 1700px ) {
+	.sectionLight {
+		padding-top: 7rem;
+		padding-bottom: 7rem;
+	}
+	.sectionDark {
+		padding-top: 7rem;
+		padding-bottom: 7rem;
+	}
+}
