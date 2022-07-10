@@ -3,6 +3,6 @@ A website that presents some of my skills and experiences as a web developer. <b
 
 powerd by: HTML, CSS, JS <br />
 
-View the website at: <a href="https://jacobportfolio.com/">https://jacobportfolio.com/</a>
+View the website at: <a href="https://ernestotruyen.com/">https://ernestotruyen.com/</a>
 
-<image src="https://github.com/transformerjnm/Portfolio/blob/master/primaryImageOfPage.png" alt="Picture of Jacob Portfolio website." />
+<image src="https://github.com/ErnestoTruyen/portfoliophp/blob/main/images/primaryimageofpage.png" alt="Picture of Ernesto Portfolio website." />

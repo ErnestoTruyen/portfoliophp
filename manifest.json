@@ -1,16 +1,15 @@
 {
-    "name": "Jacob Mitchell's Portfolio",
-    "short_name": "Jacob M.",
+    "name": "Ernesto Truyen's Portfolio",
+    "short_name": "Ernesto T.",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#05101a",
     "theme_color": "#FF7700",
     "orientation": "portrait-primary",
-    "icons": [
-        {
-           "src":  "/images/android-chrome-192x192.png",
-           "type": "image/png",
-           "sizes": "192x192"
+    "icons": [{
+            "src": "/images/android-chrome-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
         },
         {
             "src": "/images/android-chrome-512x512.png",
@@ -22,7 +21,7 @@
             "sizes": "196x196",
             "type": "image/png",
             "purpose": "maskable"
-        },      
+        },
         {
             "src": "/images/favicon.icon",
             "type": "image/icon",
