@@ -5,4 +5,4 @@ powerd by: HTML, CSS, JS <br />
 
 View the website at: <a href="https://ernestotruyen.com/">https://ernestotruyen.com/</a>
 
-<image src="https://github.com/ErnestoTruyen/portfoliophp/blob/main/images/primaryimageofpage.png" alt="Picture of Ernesto Portfolio website." />
+<image src="https://github.com/ErnestoTruyen/portfoliophp/blob/main/images/pc.jpg" alt="Picture of Ernesto Portfolio website." />

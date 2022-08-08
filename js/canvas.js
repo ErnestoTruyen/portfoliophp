@@ -1,13 +1,13 @@
 /* use css to draw background instead of redrawing in canvas every time */
 window.addEventListener("load", function() {
-    let theCanvas = document.getElementById( 'starCanvas' );
+    let theCanvas = document.getElementById('starCanvas');
     //if the canvas created properly
-    if(theCanvas && theCanvas.getContext) {
+    if (theCanvas && theCanvas.getContext) {
         theCanvas.width = document.documentElement.clientWidth || window.innerWidth;
         theCanvas.height = window.innerHeight;
-        let ctx = theCanvas.getContext( "2d" );
+        let ctx = theCanvas.getContext("2d");
         //if we have context of canvas
-        if(ctx) {
+        if (ctx) {
             let starsArray = [];
             starsArray.push(new shootingStar());
             starsArray.push(new shootingStar());
@@ -28,14 +28,14 @@ window.addEventListener("load", function() {
             }
 
             function draw(star) {
-               /* create star gradient based on size of star. larger stars are closer and brighter. farther stars a dimmer and smaller */
-                let gradient = ctx.createLinearGradient( star.starStartX, star.starStartY, star.starEndX, star.starEndY );
-                if(star.starSize > 3) {
-                   //large bright star
+                /* create star gradient based on size of star. larger stars are closer and brighter. farther stars a dimmer and smaller */
+                let gradient = ctx.createLinearGradient(star.starStartX, star.starStartY, star.starEndX, star.starEndY);
+                if (star.starSize > 3) {
+                    //large bright star
                     gradient.addColorStop("0", "rgba( 165, 199, 227, 1 )");
                     gradient.addColorStop("0.5", "rgba( 165, 199, 227, 1 )");
                     gradient.addColorStop("1.0", "rgba( 165, 199, 227, 0 )");
-                } else if(star.starSize > 2) {
+                } else if (star.starSize > 2) {
                     //medium normal star
                     gradient.addColorStop("0", "rgba( 52, 98, 137, 1 )");
                     gradient.addColorStop("0.5", "rgba( 52, 98, 137, 1 )");
@@ -65,16 +65,16 @@ window.addEventListener("load", function() {
 
             //update star position to make it move
             function update(star) {
-                starsArray.forEach( function ( star ) {
+                starsArray.forEach(function(star) {
                     let x = 1;
                     let y = 1;
-                    let diffY = Math.abs( star.starStartY - star.starEndY );
-                    let diffX = Math.abs( star.starStartX - star.starEndX );
+                    let diffY = Math.abs(star.starStartY - star.starEndY);
+                    let diffX = Math.abs(star.starStartX - star.starEndX);
                     /*if its negative make it positive*/
-                    if(diffX < 0) {                     
+                    if (diffX < 0) {
                         diffX = diffX * diffX;
                     }
-                    if(diffY < 0) {
+                    if (diffY < 0) {
                         diffY = diffY * diffY;
                     }
                     /*
@@ -84,14 +84,14 @@ window.addEventListener("load", function() {
                         uses difference so that the star movement speed match the star tail. if the tail
                         is long move faster. Also makes the speed up/down and left/right based upon the tail.
                     */
-                    if(star.starStartX > star.starEndX) {
+                    if (star.starStartX > star.starEndX) {
                         /*go right*/
                         x = (diffX / 70);
                     } else {
                         /*go left*/
                         x = (-diffX / 70);
                     }
-                    if(star.starStartY < star.starEndY) {
+                    if (star.starStartY < star.starEndY) {
                         /*go up*/
                         y = (-diffY / 80);
                     } else {
@@ -103,32 +103,32 @@ window.addEventListener("load", function() {
                     star.starEndX = star.starEndX + x;
                     star.starEndY = star.starEndY + y;
                     /*if the star is completely out of view. recreate it in view*/
-                    if(star.starEndX < 0 || star.starEndY < 0 || star.starEndX > window.innerWidth  || star.starEndY > window.innerHeight) {
+                    if (star.starEndX < 0 || star.starEndY < 0 || star.starEndX > window.innerWidth || star.starEndY > window.innerHeight) {
                         star.starStartX = Math.random() * theCanvas.width;
                         star.starStartY = Math.random() * theCanvas.height;
-                        star.starSize = (Math.random() * 3 ) + 1;
+                        star.starSize = (Math.random() * 3) + 1;
                         star.starEndX = star.starStartX + (Math.random() * 100) + 25;
-                        star.starEndY = star.starStartY - (Math.random() * 50) + 15;   
+                        star.starEndY = star.starStartY - (Math.random() * 50) + 15;
                     }
-                } );
+                });
             }
 
             //MAIN FUNCTION
             // this function make the blank canvas then calls the stars
-            function animate() {           
+            function animate() {
                 //limit to 45 frames. 1000/fps give mil sec to setTimeout for
                 setTimeout(() => {
-                    requestAnimationFrame(animate)
-                }, 22)
-                //reset canvas in-between frames
+                        requestAnimationFrame(animate)
+                    }, 22)
+                    //reset canvas in-between frames
                 ctx.clearRect(0, 0, theCanvas.width, theCanvas.height);
                 //for every circle re draw it for every frame
                 starsArray.forEach(function(star) {
                     draw(star);
                     update(star);
                 });
-            }    
+            }
             animate();
         }
-    }//context(ctx) of canvas if end
+    } //context(ctx) of canvas if end
 });
